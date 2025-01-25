@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsbtujsbhpc67"]
+
+[ext_resource type="Texture2D" uid="uid://dbdif1y62eqrr" path="res://icon.svg" id="1_cq02y"]
+[ext_resource type="Script" path="res://Scripts/mic.gd" id="2_ecjlr"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_878hw"]
+
+[sub_resource type="Gradient" id="Gradient_6dvlu"]
+offsets = PackedFloat32Array(0, 0.642857, 0.681818)
+colors = PackedColorArray(1, 0, 0.580392, 0.627451, 1, 0.478431, 0.619608, 1, 1, 0.478431, 0.619608, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f5oqp"]
+gradient = SubResource("Gradient_6dvlu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(564, 310)
+texture = ExtResource("1_cq02y")
+
+[node name="Record" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_878hw")
+autoplay = true
+bus = &"Mic"
+
+[node name="Bubble" type="Sprite2D" parent="."]
+position = Vector2(585, 327)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("GradientTexture2D_f5oqp")
+script = ExtResource("2_ecjlr")

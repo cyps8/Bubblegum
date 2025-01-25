@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy14ryavk2v7h"]
+
+[ext_resource type="Script" path="res://Scripts/SceneMan.gd" id="1_txxe8"]
+[ext_resource type="PackedScene" uid="uid://bmy8xt4kk0xvg" path="res://Nodes/Scenes/main_menu.tscn" id="2_jgyi2"]
+[ext_resource type="PackedScene" uid="uid://dsbtujsbhpc67" path="res://Nodes/Scenes/test.tscn" id="3_2ehr4"]
+
+[node name="Root" type="Node"]
+script = ExtResource("1_txxe8")
+main = ExtResource("2_jgyi2")
+game = ExtResource("3_2ehr4")
