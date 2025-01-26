@@ -48,12 +48,14 @@ texture = ExtResource("2_7yjxo")
 
 [node name="Paper3" type="Sprite2D" parent="papers"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(658.25, 215.503)
 scale = Vector2(0.3171, 0.3171)
 texture = ExtResource("3_akgn4")
 
 [node name="Paper1" type="Sprite2D" parent="papers"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(98.6236, 505.825)
 rotation = -0.47822
 scale = Vector2(0.224072, 0.224056)
@@ -61,6 +63,7 @@ texture = ExtResource("4_elpep")
 
 [node name="Paper2" type="Sprite2D" parent="papers"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(1093, 602)
 rotation = -0.598648
 scale = Vector2(0.529817, 0.529817)
@@ -104,6 +107,14 @@ visible_ratio = 0.0
 
 [node name="Back" type="CanvasLayer" parent="."]
 layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Back"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.151276, 0.151276, 0.151276, 1)
 
 [node name="Viniete" type="TextureRect" parent="Back"]
 anchors_preset = 15

@@ -16,6 +16,7 @@ func _init():
 	ins = self
 
 func _ready():
+	randomize()
 	if skipMenu:
 		ChangeScene(game)
 	else:
@@ -24,7 +25,7 @@ func _ready():
 func ChangeScene(scene: PackedScene):
 	if currentScene != null:
 		remove_child(currentScene)
-		currentScene.queue_free()
+		currentScene.free()
 	var newScene = scene.instantiate() as Node2D
 	add_child(newScene)
 	currentScene = newScene
