@@ -40,16 +40,32 @@ func StartPressed():
 		%Start.text = "CONTINUE"
 		visChar = 0
 		talkSpeed = 0.05
-		var whatHeSays = "The Case of the Stolen Bubblegum World Record."
+		var whatHeSays = "The Case of the Stolen Bubblegum World Record.\n                                        \nTCotSBgWR for short."
 		BGSpeak(whatHeSays, whatHeSays.length())
 		
 	if stage == 4 && !talking:
 		%Start.text = "CONTINUE"
+		var tween = create_tween()
+		tween.tween_property(%OfficialPaper, "scale", Vector2(0.7,0.7), 1.5).set_trans(tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.parallel()
+		tween.tween_property(%OfficialPaper, "rotation", deg_to_rad((360 * 5)+10), 1.3).set_trans(tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		
 		visChar = 0
 		talkSpeed = 0.05
-		var whatHeSays = "TCotSBgWR for short."
+		var whatHeSays = "Local papers talk of a bubble of \n26-inches (or greater) blown \nback in 2004 but for \nsome reason, no official \npublication has ever \nrecognised this.\nWhat was afoot? Scandal?\nSlander?\nBubble-blowing-bribery?"
 		BGSpeak(whatHeSays, whatHeSays.length())
-	# SceneMan.ins.ChangeScene(SceneMan.ins.game)
+
+	if stage == 5 && !talking:
+		%Start.text = "CONTINUE"
+		visChar = 0
+		talkSpeed = 0.05
+		var whatHeSays = "We cut back to the scene, \nat the moment of the crime, \nto investigate."
+		BGSpeak(whatHeSays, whatHeSays.length())
+
+	if stage == 6 && !talking:
+		SceneMan.ins.ChangeScene(SceneMan.ins.game)
+		
+	
 
 func StartToSpeak():
 	visChar = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmy8xt4kk0xvg"]
+[gd_scene load_steps=13 format=3 uid="uid://bmy8xt4kk0xvg"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_dc6ba"]
 [ext_resource type="Texture2D" uid="uid://dih8mbiyegxsu" path="res://Sprites/wordart.png" id="2_7yjxo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b60yunslq57a2" path="res://Sprites/paper/paper1.png" id="4_elpep"]
 [ext_resource type="Texture2D" uid="uid://du8uceqr6h804" path="res://Sprites/paper/paper2.png" id="5_ng5s4"]
 [ext_resource type="Texture2D" uid="uid://fq1wqdf6cbwk" path="res://Sprites/bgumshoe/bubble gumshoe lower.png" id="6_5xrok"]
+[ext_resource type="Texture2D" uid="uid://bxiu5wcc5w85m" path="res://Sprites/paper/officialPaper.png" id="6_aktgj"]
 [ext_resource type="Texture2D" uid="uid://cqkfa3cccva04" path="res://Sprites/bgumshoe/bubble gumshoe upper.png" id="7_j6nha"]
 [ext_resource type="FontFile" uid="uid://bls75m6ha7h2d" path="res://Lore/EBGaramond-Italic-VariableFont_wght.ttf" id="8_7ptvm"]
 
@@ -47,26 +48,29 @@ texture = ExtResource("2_7yjxo")
 
 [node name="Paper3" type="Sprite2D" parent="papers"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(658.25, 215.503)
 scale = Vector2(0.3171, 0.3171)
 texture = ExtResource("3_akgn4")
 
 [node name="Paper1" type="Sprite2D" parent="papers"]
 unique_name_in_owner = true
-visible = false
-position = Vector2(135.015, 324.817)
+position = Vector2(98.6236, 505.825)
 rotation = -0.47822
-scale = Vector2(0.162562, 0.16255)
+scale = Vector2(0.224072, 0.224056)
 texture = ExtResource("4_elpep")
 
 [node name="Paper2" type="Sprite2D" parent="papers"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(1093, 602)
 rotation = -0.598648
 scale = Vector2(0.529817, 0.529817)
 texture = ExtResource("5_ng5s4")
+
+[node name="OfficialPaper" type="Sprite2D" parent="papers"]
+unique_name_in_owner = true
+position = Vector2(954, 517)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_aktgj")
 
 [node name="bubblegumshoe" type="Node" parent="."]
 
