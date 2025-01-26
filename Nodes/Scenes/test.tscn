@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dsbtujsbhpc67"]
+[gd_scene load_steps=31 format=3 uid="uid://dsbtujsbhpc67"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8oci"]
 [ext_resource type="Texture2D" uid="uid://br5a0b06sb77v" path="res://Sprites/world stuff/Earth.png" id="2_c6b3e"]
@@ -10,6 +10,11 @@
 [ext_resource type="Script" path="res://Scripts/BGSTalking.gd" id="5_x26ef"]
 [ext_resource type="Texture2D" uid="uid://cqkfa3cccva04" path="res://Sprites/bgumshoe/bubble gumshoe upper.png" id="6_s7wrq"]
 [ext_resource type="FontFile" uid="uid://bls75m6ha7h2d" path="res://Lore/EBGaramond-Italic-VariableFont_wght.ttf" id="7_utuxq"]
+[ext_resource type="Texture2D" uid="uid://dd0v3etw3m3gu" path="res://Sprites/world stuff/mushroomba.png" id="11_sg2s5"]
+[ext_resource type="Texture2D" uid="uid://dcki3hmwmmdy6" path="res://Sprites/world stuff/godotplush.png" id="12_pavb7"]
+[ext_resource type="Texture2D" uid="uid://cw77u6vf448lq" path="res://Sprites/world stuff/robot.png" id="13_siico"]
+[ext_resource type="Texture2D" uid="uid://ycxa1utqk1jx" path="res://Sprites/world stuff/Picture Of Friend.png" id="14_vpyo7"]
+[ext_resource type="Texture2D" uid="uid://b0uuwo1koi5ne" path="res://Sprites/world stuff/planet.png" id="15_1xb36"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_878hw"]
 
@@ -129,6 +134,33 @@ texture = ExtResource("2_cnxls")
 stream = SubResource("AudioStreamMicrophone_878hw")
 autoplay = true
 bus = &"Mic"
+
+[node name="Mushroomba" type="Sprite2D" parent="."]
+position = Vector2(816, 417)
+scale = Vector2(0.0444003, 0.0444003)
+texture = ExtResource("11_sg2s5")
+
+[node name="Godotplush" type="Sprite2D" parent="."]
+position = Vector2(-168, 572)
+scale = Vector2(0.177609, 0.177609)
+texture = ExtResource("12_pavb7")
+
+[node name="Robot" type="Sprite2D" parent="."]
+position = Vector2(2005, -3473)
+rotation = -0.591793
+scale = Vector2(1.84324, 1.84324)
+texture = ExtResource("13_siico")
+
+[node name="PictureOfFriend" type="Sprite2D" parent="."]
+position = Vector2(-3703, -6073)
+rotation = 0.528142
+scale = Vector2(2.60844, 2.60844)
+texture = ExtResource("14_vpyo7")
+
+[node name="Planet" type="Sprite2D" parent="."]
+position = Vector2(55885, -25777)
+scale = Vector2(52.3628, 52.3628)
+texture = ExtResource("15_1xb36")
 
 [node name="LilGuy" type="Sprite2D" parent="."]
 position = Vector2(627, 658)
@@ -272,32 +304,5 @@ text = "RETRY"
 [node name="Cam" type="Camera2D" parent="."]
 position = Vector2(664, -8561)
 zoom = Vector2(0.03, 0.03)
-
-[node name="bubblegumshoe" type="Node" parent="Cam"]
-
-[node name="BubbleGumshoeLower" type="Sprite2D" parent="Cam/bubblegumshoe"]
-z_index = -1
-position = Vector2(164.25, 805.75)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_vrdgi")
-
-[node name="BubbleGumshoeUpper" type="Sprite2D" parent="Cam/bubblegumshoe"]
-z_index = -1
-position = Vector2(110, 849)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_s7wrq")
-centered = false
-offset = Vector2(-500, -1400)
-
-[node name="Speech" type="RichTextLabel" parent="Cam/bubblegumshoe"]
-offset_left = 117.0
-offset_top = 59.0
-offset_right = 943.0
-offset_bottom = 740.0
-theme = SubResource("Theme_766km")
-text = "SAMPLE"
-fit_content = true
-visible_characters = 0
-visible_ratio = 0.0
 
 [connection signal="pressed" from="HUD/Retry" to="." method="Retry"]

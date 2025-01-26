@@ -61,7 +61,11 @@ func StartToSpeak():
 		tutorial = false
 	elif ending:
 		whatHeSays = "In spite of the bubble's humongous, enormous size... there were no witnesses.
-...The case went cold."
+...The case went cold.\n\nThank you for playing!
+Made by Cypri and Ewan
+With additional dialogue from James Morwood
+Based on a true story"
+		%Speech.position.y -= 400
 	else:
 		whatHeSays = stringsToSay.pick_random()
 	BGSpeak(whatHeSays, whatHeSays.length())

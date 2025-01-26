@@ -112,7 +112,7 @@ func _physics_process(_dt):
 
 	if bubbleLife < 0 && !popped:
 		popped = true
-		retry.visible = true
+		retry.visible = false # should be true but its broken :c
 		if over:
 			bubble.texture = null
 			burst.scale_amount_max = size
