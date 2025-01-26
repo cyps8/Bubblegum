@@ -117,7 +117,7 @@ func _physics_process(_dt):
 	scoreLabel.text = str("Bubble Size: " + str(snapped(size * 33, 0.1)) + " inches\nRecord Size: " + str(snapped(SceneMan.ins.record, 0.1)) + " inches")
 
 	if over && !popped:
-		bubble.scale = Vector2(size + (0.1 * (1 - bubbleLife) * randf()), size + (0.1 * (1 - bubbleLife) * randf()))
+		bubble.scale = Vector2(size + (size * 0.1 * (1 - bubbleLife) * randf()), size + (size * 0.1 * (1 - bubbleLife) * randf()))
 
 	if under && !popped:
 		squishAmount = 1 - bubbleLife

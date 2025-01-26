@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://dsbtujsbhpc67"]
 
-[ext_resource type="Texture2D" uid="uid://dbdif1y62eqrr" path="res://icon.svg" id="1_cq02y"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8oci"]
 [ext_resource type="Texture2D" uid="uid://cgegic4cikb5i" path="res://Sprites/world stuff/park.png" id="2_cnxls"]
 [ext_resource type="Texture2D" uid="uid://14kupdo2xci" path="res://Sprites/world stuff/sky.png" id="2_f3pwu"]
+[ext_resource type="Texture2D" uid="uid://drv7tf70k017x" path="res://Sprites/littleGuy.png" id="4_u0vcl"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_878hw"]
 
@@ -107,8 +107,9 @@ autoplay = true
 bus = &"Mic"
 
 [node name="LilGuy" type="Sprite2D" parent="."]
-position = Vector2(624, 603)
-texture = ExtResource("1_cq02y")
+position = Vector2(627, 658)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_u0vcl")
 
 [node name="Bubble" type="Sprite2D" parent="."]
 position = Vector2(645, 620)
