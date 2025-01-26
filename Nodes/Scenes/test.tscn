@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsbtujsbhpc67"]
+[gd_scene load_steps=19 format=3 uid="uid://dsbtujsbhpc67"]
 
 [ext_resource type="Texture2D" uid="uid://dbdif1y62eqrr" path="res://icon.svg" id="1_cq02y"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8oci"]
 [ext_resource type="Texture2D" uid="uid://cgegic4cikb5i" path="res://Sprites/world stuff/park.png" id="2_cnxls"]
+[ext_resource type="Texture2D" uid="uid://14kupdo2xci" path="res://Sprites/world stuff/sky.png" id="2_f3pwu"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_878hw"]
 
 [sub_resource type="Gradient" id="Gradient_6dvlu"]
-offsets = PackedFloat32Array(0, 0.642857, 0.655844)
+offsets = PackedFloat32Array(0, 0.706011, 0.707104)
 colors = PackedColorArray(1, 0, 0.580392, 0.772549, 1, 0.478431, 0.619608, 1, 1, 0.478431, 0.619608, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_f5oqp"]
@@ -32,9 +33,20 @@ fill_from = Vector2(0.5, 0.5)
 _data = [Vector2(0, 1), 0.0, -1.95604, 0, 0, Vector2(1, 0), -1.42738, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Gradient" id="Gradient_ohgo5"]
+offsets = PackedFloat32Array(0.623377, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_51ghw"]
+gradient = SubResource("Gradient_ohgo5")
+width = 240
+height = 180
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="Gradient" id="Gradient_n3w4i"]
 offsets = PackedFloat32Array(0.441558, 0.668831, 0.707792)
-colors = PackedColorArray(1, 1, 0.356863, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+colors = PackedColorArray(1, 0.992157, 0.498039, 0.835294, 1, 1, 0, 0.905882, 1, 1, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_b7rjt"]
 gradient = SubResource("Gradient_n3w4i")
@@ -43,8 +55,19 @@ height = 220
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_p5t5r"]
+offsets = PackedFloat32Array(0, 0.540179, 0.598214, 0.616071)
+colors = PackedColorArray(0, 1, 1, 0.556863, 0.425, 1, 1, 0.824118, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mgbd6"]
+gradient = SubResource("Gradient_p5t5r")
+width = 40
+height = 40
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvw7d"]
-bg_color = Color(0.154876, 0.154876, 0.154876, 0.611765)
+bg_color = Color(0.152941, 0.152941, 0.152941, 0.733333)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -68,7 +91,12 @@ scoreLabel = NodePath("HUD/c/Size")
 
 [node name="Back" type="Node2D" parent="."]
 
+[node name="Sky" type="Sprite2D" parent="Back"]
+position = Vector2(506, -1308)
+texture = ExtResource("2_f3pwu")
+
 [node name="Park" type="Sprite2D" parent="Back"]
+modulate = Color(0.699653, 0.699653, 0.699653, 1)
 position = Vector2(537, 430)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_cnxls")
@@ -79,14 +107,16 @@ autoplay = true
 bus = &"Mic"
 
 [node name="LilGuy" type="Sprite2D" parent="."]
-position = Vector2(752, 455)
+position = Vector2(624, 603)
 texture = ExtResource("1_cq02y")
 
 [node name="Bubble" type="Sprite2D" parent="."]
-position = Vector2(773, 472)
+position = Vector2(645, 620)
 texture = SubResource("GradientTexture2D_f5oqp")
+offset = Vector2(0, -100)
 
 [node name="Burst" type="CPUParticles2D" parent="Bubble"]
+position = Vector2(0, -100)
 emitting = false
 amount = 30
 lifetime = 0.5
@@ -110,13 +140,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Viniette" type="TextureRect" parent="HUD/c"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_51ghw")
+
 [node name="Bar" type="ColorRect" parent="HUD/c"]
 layout_mode = 0
 offset_left = 53.0
 offset_top = 68.0
 offset_right = 111.0
 offset_bottom = 812.0
-color = Color(0.121334, 0.058626, 0.0581203, 0.196078)
+color = Color(0, 0, 0, 0.564706)
 
 [node name="Zone" type="TextureRect" parent="HUD/c/Bar"]
 layout_mode = 0
@@ -126,20 +165,20 @@ offset_right = 69.0
 offset_bottom = 740.0
 texture = SubResource("GradientTexture2D_b7rjt")
 
-[node name="Blow" type="ColorRect" parent="HUD/c/Bar"]
+[node name="Blow" type="TextureRect" parent="HUD/c/Bar"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 700.0
 offset_right = 49.0
 offset_bottom = 740.0
-color = Color(0.290196, 1, 1, 1)
+texture = SubResource("GradientTexture2D_mgbd6")
 
 [node name="BubbleBar" type="ProgressBar" parent="HUD/c"]
 layout_mode = 0
 offset_left = 134.0
-offset_top = 115.0
+offset_top = 78.0
 offset_right = 165.0
-offset_bottom = 781.0
+offset_bottom = 744.0
 theme_override_styles/background = SubResource("StyleBoxFlat_tvw7d")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xi7l3")
 max_value = 1.0
@@ -149,13 +188,18 @@ show_percentage = false
 
 [node name="Size" type="RichTextLabel" parent="HUD/c"]
 layout_mode = 0
-offset_left = 209.0
-offset_top = 746.0
-offset_right = 558.0
-offset_bottom = 838.0
+offset_left = 133.0
+offset_top = 764.0
+offset_right = 482.0
+offset_bottom = 856.0
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/normal_font_size = 30
 text = "Bubble size:
 Record size:"
 fit_content = true
+
+[node name="Cam" type="Camera2D" parent="."]
+position = Vector2(599, 441)
