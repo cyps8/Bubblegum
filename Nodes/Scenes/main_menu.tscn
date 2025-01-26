@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmy8xt4kk0xvg"]
+[gd_scene load_steps=15 format=3 uid="uid://bmy8xt4kk0xvg"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_dc6ba"]
-[ext_resource type="Texture2D" uid="uid://dih8mbiyegxsu" path="res://Sprites/wordart.png" id="2_7yjxo"]
+[ext_resource type="Texture2D" uid="uid://br4i7wbtysi5o" path="res://Sprites/title.png" id="2_fik2a"]
 [ext_resource type="Texture2D" uid="uid://kouus2u3q1kh" path="res://Sprites/paper/paper3.png" id="3_akgn4"]
 [ext_resource type="Texture2D" uid="uid://b60yunslq57a2" path="res://Sprites/paper/paper1.png" id="4_elpep"]
 [ext_resource type="Texture2D" uid="uid://du8uceqr6h804" path="res://Sprites/paper/paper2.png" id="5_ng5s4"]
@@ -10,17 +10,27 @@
 [ext_resource type="Texture2D" uid="uid://cqkfa3cccva04" path="res://Sprites/bgumshoe/bubble gumshoe upper.png" id="7_j6nha"]
 [ext_resource type="FontFile" uid="uid://bls75m6ha7h2d" path="res://Lore/EBGaramond-Italic-VariableFont_wght.ttf" id="8_7ptvm"]
 
+[sub_resource type="Gradient" id="Gradient_dt5f6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.506494)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_io6py"]
+gradient = SubResource("Gradient_dt5f6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="Theme" id="Theme_4s3km"]
 default_font = ExtResource("8_7ptvm")
 default_font_size = 50
 
-[sub_resource type="Gradient" id="Gradient_dt5f6"]
+[sub_resource type="Gradient" id="Gradient_rfeqd"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.506494, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_io6py"]
-gradient = SubResource("Gradient_dt5f6")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4mvr2"]
+gradient = SubResource("Gradient_rfeqd")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -39,10 +49,24 @@ text = "START"
 
 [node name="Wordart" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-z_index = 2
-position = Vector2(563, 320)
-scale = Vector2(0.281077, 0.281077)
-texture = ExtResource("2_7yjxo")
+z_index = 5
+position = Vector2(373.489, 200)
+scale = Vector2(0.59825, 0.59825)
+texture = ExtResource("2_fik2a")
+
+[node name="Viniete" type="TextureRect" parent="Wordart"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2135.38
+offset_top = -653.573
+offset_right = -2135.38
+offset_bottom = -653.573
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.47388, 3.47388)
+texture = SubResource("GradientTexture2D_io6py")
 
 [node name="papers" type="Node" parent="."]
 
@@ -111,6 +135,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_io6py")
+texture = SubResource("GradientTexture2D_4mvr2")
 
 [connection signal="pressed" from="Start" to="." method="StartPressed"]

@@ -6,6 +6,5 @@
 
 [node name="Root" type="Node"]
 script = ExtResource("1_txxe8")
-skipMenu = true
 main = ExtResource("2_jgyi2")
 game = ExtResource("3_2ehr4")
