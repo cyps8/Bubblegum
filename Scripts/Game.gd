@@ -47,6 +47,8 @@ func _physics_process(_dt):
 	var volume = AudioServer.get_bus_peak_volume_left_db(2, 0)
 	var blowCentre = blow.global_position.y + (blow.size.y /2)
 	if (volume > -10 || Input.is_action_pressed("Test")) && ! popped:
+		if started == false:
+			MoveZone(true)
 		started = true
 		blowing = true
 		if blowCentre < zone.global_position.y + zone.size.y:
@@ -101,7 +103,6 @@ func _physics_process(_dt):
 
 	if !moving && started:
 		MoveZone()
-		moving = true
 
 	if size < minSize:
 		size = minSize
@@ -113,7 +114,7 @@ func _physics_process(_dt):
 		score = size * 33
 	if score > SceneMan.ins.record:
 		SceneMan.ins.record = score
-	scoreLabel.text = str("Bubble Size: " + str(snapped(size * 33, 0.1)) + "inches\nRecord Size: " + str(snapped(SceneMan.ins.record, 0.1)) + "inches")
+	scoreLabel.text = str("Bubble Size: " + str(snapped(size * 33, 0.1)) + " inches\nRecord Size: " + str(snapped(SceneMan.ins.record, 0.1)) + " inches")
 
 	if over && !popped:
 		bubble.scale = Vector2(size + (0.1 * (1 - bubbleLife) * randf()), size + (0.1 * (1 - bubbleLife) * randf()))
@@ -131,11 +132,15 @@ func _physics_process(_dt):
 	if popped:
 		bubble.scale = bubble.scale * 0.99
 
-func MoveZone():
+func MoveZone(first: bool = false):
+	moving = true
 	var tween: Tween = create_tween()
-	var newPos = randf_range(0, zoneLimit - 150)
-	while (abs(newPos - zone.position.y)) < 150:
-		newPos = randf_range(0, zoneLimit - 150)
-	tween.tween_property(zone, "position:y", newPos, randf_range(1, 4))
+	if !first:
+		var newPos = randf_range(0, zoneLimit - 150)
+		while (abs(newPos - zone.position.y)) < 150:
+			newPos = randf_range(0, zoneLimit - 150)
+		tween.tween_property(zone, "position:y", newPos, randf_range(1, 4))
+	else:
+		tween.tween_property(zone, "position:y", 300, 4)
 	tween.tween_callback(func(): moving = false)
 		
