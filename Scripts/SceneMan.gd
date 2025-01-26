@@ -12,7 +12,7 @@ func _init():
 	ins = self
 
 func _ready():
-	ChangeScene(main)
+	ChangeScene(game)
 
 func ChangeScene(scene: PackedScene):
 	if currentScene != null:

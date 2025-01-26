@@ -27,7 +27,7 @@ var moving: bool = false
 var started: bool = false
 
 func _physics_process(_dt):
-	var volume = AudioServer.get_bus_peak_volume_left_db(1, 0)
+	var volume = AudioServer.get_bus_peak_volume_left_db(2, 0)
 	if (volume > 0 || Input.is_action_pressed("Test")) && ! popped:
 		started = true
 		size = size * 1.01
@@ -68,8 +68,7 @@ func _physics_process(_dt):
 func MoveZone():
 	var tween: Tween = create_tween()
 	var newPos = randf_range(0, zoneLimit - 150)
-	while (newPos - zone.position.y) < 100:
-		print(newPos)
+	while (abs(newPos - zone.position.y)) < 200:
 		newPos = randf_range(0, zoneLimit - 150)
 	tween.tween_property(zone, "position:y", newPos, randf_range(1, 4))
 	tween.tween_callback(func(): moving = false)
