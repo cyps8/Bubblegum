@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 driver/enable_input=true
 
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=900
+
 [input]
 
 Test={
