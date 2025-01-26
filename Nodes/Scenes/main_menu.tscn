@@ -75,6 +75,7 @@ texture = ExtResource("6_aktgj")
 [node name="bubblegumshoe" type="Node" parent="."]
 
 [node name="BubbleGumshoeLower" type="Sprite2D" parent="bubblegumshoe"]
+unique_name_in_owner = true
 z_index = -1
 position = Vector2(164.25, 805.75)
 scale = Vector2(0.1, 0.1)

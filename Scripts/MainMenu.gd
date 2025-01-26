@@ -59,7 +59,7 @@ func StartPressed():
 		%Start.text = "CONTINUE"
 		visChar = 0
 		talkSpeed = 0.05
-		var whatHeSays = "We cut back to the scene, \nat the moment of the crime, \nto investigate."
+		var whatHeSays = "I, Detective Bubblegumshoe, \ncut back to the scene, \nat the moment of the crime, \nto investigate."
 		BGSpeak(whatHeSays, whatHeSays.length())
 
 	if stage == 6 && !talking:
