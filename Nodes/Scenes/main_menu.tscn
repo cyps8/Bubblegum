@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmy8xt4kk0xvg"]
+[gd_scene load_steps=12 format=3 uid="uid://bmy8xt4kk0xvg"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_dc6ba"]
 [ext_resource type="Texture2D" uid="uid://dih8mbiyegxsu" path="res://Sprites/wordart.png" id="2_7yjxo"]
@@ -13,6 +13,16 @@
 default_font = ExtResource("8_7ptvm")
 default_font_size = 50
 
+[sub_resource type="Gradient" id="Gradient_dt5f6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.506494, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_io6py"]
+gradient = SubResource("Gradient_dt5f6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_dc6ba")
 
@@ -23,6 +33,7 @@ offset_left = 857.0
 offset_top = 750.0
 offset_right = 1031.0
 offset_bottom = 822.0
+theme_override_font_sizes/font_size = 25
 text = "START"
 
 [node name="Wordart" type="Sprite2D" parent="."]
@@ -85,5 +96,16 @@ text = "SAMPLE"
 fit_content = true
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="Back" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Viniete" type="TextureRect" parent="Back"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_io6py")
 
 [connection signal="pressed" from="Start" to="." method="StartPressed"]

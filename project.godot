@@ -24,6 +24,10 @@ driver/enable_input=true
 window/size/viewport_width=1200
 window/size/viewport_height=900
 
+[gui]
+
+theme/custom_font="res://Lore/EBGaramond-Italic-VariableFont_wght.ttf"
+
 [input]
 
 Test={

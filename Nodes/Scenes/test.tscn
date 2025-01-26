@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsbtujsbhpc67"]
+[gd_scene load_steps=14 format=3 uid="uid://dsbtujsbhpc67"]
 
 [ext_resource type="Texture2D" uid="uid://dbdif1y62eqrr" path="res://icon.svg" id="1_cq02y"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_h8oci"]
+[ext_resource type="Texture2D" uid="uid://cgegic4cikb5i" path="res://Sprites/world stuff/park.png" id="2_cnxls"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_878hw"]
 
@@ -18,29 +19,86 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 1)
 
+[sub_resource type="Gradient" id="Gradient_ui4yf"]
+offsets = PackedFloat32Array(0.422535, 0.443662)
+colors = PackedColorArray(0.980392, 0.423529, 0.607843, 1, 0.980392, 0.423529, 0.607843, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eeqa4"]
+gradient = SubResource("Gradient_ui4yf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_ibluq"]
+_data = [Vector2(0, 1), 0.0, -1.95604, 0, 0, Vector2(1, 0), -1.42738, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_n3w4i"]
+offsets = PackedFloat32Array(0.441558, 0.668831, 0.707792)
+colors = PackedColorArray(1, 1, 0.356863, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b7rjt"]
+gradient = SubResource("Gradient_n3w4i")
+width = 80
+height = 220
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvw7d"]
+bg_color = Color(0.154876, 0.154876, 0.154876, 0.611765)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xi7l3"]
 bg_color = Color(1, 0.6, 0.6, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("zone", "blow", "bubbleBar", "bubble")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("zone", "blow", "bubbleBar", "bubble", "burst", "scoreLabel")]
 script = ExtResource("1_h8oci")
 zone = NodePath("HUD/c/Bar/Zone")
 blow = NodePath("HUD/c/Bar/Blow")
 bubbleBar = NodePath("HUD/c/BubbleBar")
 bubble = NodePath("Bubble")
+burst = NodePath("Bubble/Burst")
+scoreLabel = NodePath("HUD/c/Size")
 
-[node name="LilGuy" type="Sprite2D" parent="."]
-position = Vector2(564, 310)
-texture = ExtResource("1_cq02y")
+[node name="Back" type="Node2D" parent="."]
+
+[node name="Park" type="Sprite2D" parent="Back"]
+position = Vector2(537, 430)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cnxls")
 
 [node name="Record" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_878hw")
 autoplay = true
 bus = &"Mic"
 
+[node name="LilGuy" type="Sprite2D" parent="."]
+position = Vector2(752, 455)
+texture = ExtResource("1_cq02y")
+
 [node name="Bubble" type="Sprite2D" parent="."]
-position = Vector2(585, 327)
-scale = Vector2(0.02, 0.02)
+position = Vector2(773, 472)
 texture = SubResource("GradientTexture2D_f5oqp")
+
+[node name="Burst" type="CPUParticles2D" parent="Bubble"]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_eeqa4")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_curve = SubResource("Curve_ibluq")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -60,19 +118,19 @@ offset_right = 111.0
 offset_bottom = 812.0
 color = Color(0.121334, 0.058626, 0.0581203, 0.196078)
 
-[node name="Zone" type="ColorRect" parent="HUD/c/Bar"]
+[node name="Zone" type="TextureRect" parent="HUD/c/Bar"]
 layout_mode = 0
-offset_left = -9.0
+offset_left = -11.0
 offset_top = 520.0
-offset_right = 67.0
+offset_right = 69.0
 offset_bottom = 740.0
-color = Color(1, 1, 0, 0.196078)
+texture = SubResource("GradientTexture2D_b7rjt")
 
 [node name="Blow" type="ColorRect" parent="HUD/c/Bar"]
 layout_mode = 0
-offset_left = 8.0
+offset_left = 9.0
 offset_top = 700.0
-offset_right = 48.0
+offset_right = 49.0
 offset_bottom = 740.0
 color = Color(0.290196, 1, 1, 1)
 
@@ -82,8 +140,22 @@ offset_left = 134.0
 offset_top = 115.0
 offset_right = 165.0
 offset_bottom = 781.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tvw7d")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xi7l3")
 max_value = 1.0
-value = 1.0
+value = 0.5
 fill_mode = 3
 show_percentage = false
+
+[node name="Size" type="RichTextLabel" parent="HUD/c"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 746.0
+offset_right = 558.0
+offset_bottom = 838.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 30
+text = "Bubble size:
+Record size:"
+fit_content = true
